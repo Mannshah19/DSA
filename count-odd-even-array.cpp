@@ -24,10 +24,14 @@ int main(){
         }
 
         else{
+
             odd++;
+
         }
         
     }
+    
+
     
     cout << "Odd number: " << odd << endl;
     cout << "Even number: " << even << endl;
