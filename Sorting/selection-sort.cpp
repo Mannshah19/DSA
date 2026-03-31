@@ -32,19 +32,26 @@ void inputElement(int s , int arr[])
     }
 
 
-    void insertSort(int s , int arr[])
+    void selectionSort(int s , int arr[])
     {
-        for (int i = 1; i < s; i++)
+        for (int i = 0; i < s - 1; i++)
         {
-            int key = arr[i];
-            int j = i - 1;
 
-            while (j >= 0 && arr[j] > key)
+            int minElement = i;
+
+        for (int j = i + 1; j < s; j++)
+        {
+            if (arr[j] < arr[minElement])
             {
-                arr[j + 1] = arr[j];
-                j--;
+                minElement = j;
             }
-            arr[j + 1] = key;
+
+        }
+
+
+        int temp = arr[i];
+        arr[i] = arr[minElement];
+        arr[minElement] = temp;
         }
     }
 
@@ -60,7 +67,7 @@ int main (){
 
     printElements(size, arr);
 
-    insertSort( size , arr);
+    selectionSort( size , arr);
 
     printElements(size, arr);
 
