@@ -1,68 +1,38 @@
 #include<iostream>
 using namespace std;
 
+int main(){
 
-
-void inputElement(int s , int arr[])
-
-{
-
-    for (int i = 0; i < s; i++)
-    {
-        cout << "arr[" << i << "] = ";
-        cin >> arr[i];
-
-    }
-
-    
-    
-    
-}
-
-    void printElements(int s , int arr[])
-    {
-
-        cout << "\nOriginal Array : ";
-    for (int i = 0; i < s; i++)
-    {
-        cout << arr[i] << " " ;
-
-    }
-
-    }
-
-
-    void insertSort(int s , int arr[])
-    {
-        for (int i = 1; i < s; i++)
-        {
-            int key = arr[i];
-            int j = i - 1;
-
-            while (j >= 0 && arr[j] > key)
-            {
-                arr[j + 1] = arr[j];
-                j--;
-            }
-            arr[j + 1] = key;
-        }
-    }
-
-int main (){
-
-    int size;
+    int n;
     cout << "Enter the size of an array: ";
-    cin >> size;
+    cin >> n;
 
-    int arr[size];
-    inputElement(size, arr);
+    int a[n] , positive = 0 , negative = 0;
+
+    
+    cout << "Enter the elements of an array: "<< endl;
+    for(int i=0; i<n; i++){
+        cout << "Enter the [" << i <<"]: ";
+        cin >> a[i];
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        if (a [i] >= 0)
+        {
+            positive++;
+        }
+
+        else{
+            negative++;
+        }
+        
+    }
+    
+    cout << "Positive number: " << positive << endl;
+    cout << "Negative number: " << negative << endl;
 
 
-    printElements(size, arr);
-
-    insertSort( size , arr);
-
-    printElements(size, arr);
 
 
     return 0;
