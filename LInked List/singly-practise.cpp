@@ -37,18 +37,42 @@ int main()
     Node *current = new Node();
 
     current -> data = 20;
-    n2 -> next = NULL;
-    HEAD -> next = n2;
+    current -> next = NULL;
+    HEAD -> next = current;
 
     
     
-    cout << "Second Node Address: " << n2 << endl;
-    cout << "Second Node Data: " << n2 -> data << endl;
-    cout << "Second Node next" << n2 -> next << endl;
+    cout << "Second Node Address: " << current << endl;
+    cout << "Second Node Data: " << current -> data << endl;
+    cout << "Second Node next: " << current -> next << endl;
     cout << "First Node next: " << HEAD -> next << endl;
     cout << endl;
 
+    current = new Node();
+    current -> data = 30;
+    current -> next = NULL;
+    HEAD -> next -> next = current;
 
+    
+    
+    cout << "Third Node Address: " << current << endl;
+    cout << "Third Node Data: " << current -> data << endl;
+    cout << "Third Node next: " << current -> next << endl;
+    cout << "Second Node next: " << HEAD -> next -> next << endl;
+    cout << endl;
+
+
+    Node *ptr = NULL;
+    ptr = HEAD;
+
+
+    while (ptr != NULL)
+    {
+        cout << ptr -> data << endl;
+
+        ptr = ptr-> next;
+    }
+    
     
 
 
