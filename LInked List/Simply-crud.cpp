@@ -63,11 +63,103 @@ void insertAtEnd(int ele)
     
 }
 
+void Insert()
+{
+    int choice, ele;
+    cout << "\n--- Insert Menu ---" << endl;
+    cout << "1. Insert at Beginning" << endl;
+    cout << "2. Insert at End" << endl;
+    cout << "3. Insert at any Position" << endl;
+    cout << "0. Exit" << endl;
+    cout << "Enter your choice: ";
+    cin >> choice;
+    
+    switch(choice)
+    {
+        case 1:
+        {
+
+            cout << "Enter value: ";
+            cin >> ele;
+
+
+            if (HEAD == NULL)
+
+            {
+
+                HEAD = new Node(ele);
+
+            }
+            else
+
+            {
+
+                Node *current = new Node(ele);
+
+                current->next = HEAD;
+                HEAD = current;
+            }
+
+            cout << "Inserted " << ele << " at beginning" << endl;
+
+
+
+            break;
+        }
+        case 2:
+        {
+            cout << "Enter value: ";
+            cin >> ele;
+
+            if (HEAD == NULL)
+
+
+            {
+
+
+                HEAD = new Node(ele);
+
+            }
+
+            else
+
+            {
+
+                Node *current = HEAD;
+
+                while (current->next != NULL)
+
+                {
+
+                    current = current->next;
+
+                }
+
+                current->next = new Node(ele);
+
+            }
+
+            cout << "Inserted " << ele << " at end" << endl;
+
+
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        case 0:
+        {
+            break;
+        }
+    }
+}
+
 int main()
 
 {
 
-    int choice;
+    int choice , ele , pos;
 
 
     do
@@ -83,22 +175,14 @@ int main()
         cout <<"4. Display Element in the Linked List....." << endl;
         cout <<"5. Count Element in the Linked List....." << endl;
         cout <<"0. Exit....." << endl;
-        cout << "Enter your choice: " << endl;
+        cout << "Enter your choice: ";
         cin >> choice;
         cout << endl;
         switch (choice)
         {
             case 1:
                 {
-                    int value, pos;
-                    cout << "1. Insert at Beginning\n2. Insert at End\nEnter position: ";
-                    cin >> pos;
-                    cout << "Enter value: ";
-                    cin >> value;
-                    if (pos == 1)
-                        insertAtBeginning(value);
-                    else
-                        insertAtEnd(value);
+                    Insert();
                     break;
                 }
 
@@ -115,6 +199,47 @@ int main()
                 }
 
                 case 4:
+                {
+
+                    if (HEAD == NULL)
+
+
+                    {
+
+                        cout << "List is empty" << endl;
+
+
+                    }
+
+
+                    else
+                    {
+
+                        Node *current = HEAD;
+
+                        cout << "List elements: ";
+                        while (current != NULL)
+
+                        {
+
+                            cout << current->data << " ";
+                            current = current->next;
+
+
+                        }
+                        cout << endl;
+                    }
+                    break;
+                }
+
+
+                case 5:
+                {
+
+                    break;
+                }
+
+                case 0:
                 {
 
                     break;
