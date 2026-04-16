@@ -122,17 +122,22 @@ void InsertElement()
                 cout << "Enter value: ";
                 cin >> ele;
 
-                if (pos == 1)
+                if (pos > CountElement() + 1)
+                {
+                    cout << "Position out of range. List has " << CountElement() << " nodes" << endl;
+                }
+                else if (pos == 1)
                 {
                     Node *current = new Node(ele);
 
                     current->next = HEAD;
                     HEAD = current;
+
+                    cout << "Inserted " << ele << " at position " << pos << endl;
                 }
                 else
                 {
                     Node *current = HEAD;
-
 
                     for (int i = 1; i < pos - 1; i++)
 
@@ -142,28 +147,12 @@ void InsertElement()
 
                     }
 
-                    if (current == NULL)
+                    Node *ptr = new Node(ele);
+                    ptr->next = current->next;
+                    current->next = ptr;
 
-                    {
-
-
-                        cout << "Position out of range" << endl;
-                    }
-
-
-                    else
-                    {
-
-
-                        Node *ptr = new Node(ele);
-                        ptr->next = current->next;
-                        current->next = ptr;
-                    }
-
-
+                    cout << "Inserted " << ele << " at position " << pos << endl;
                 }
-
-                cout << "Inserted " << ele << " at position " << pos << endl;
                 break;
             }
             case 0:
@@ -180,6 +169,66 @@ void InsertElement()
             
         }
     } while (choice != 0);
+}
+
+int CountElement()
+{
+    Node *current = HEAD;
+
+    int count = 0;
+
+    while (current != NULL)
+
+    {
+
+        count++;
+        current = current->next;
+
+    }
+
+    return count;
+}
+
+void UpdateElement()
+{
+    if (HEAD == NULL)
+    {
+
+        cout << "List is empty" << endl;
+        return;
+
+    }
+
+    int pos, ele;
+
+    cout << "Enter position to update: ";
+    cin >> pos;
+
+
+    cout << "Enter new value: ";
+    cin >> ele;
+
+
+    if (pos > CountElement())
+    {
+
+        cout << "Position out of range. List has " << CountElement() << " nodes" << endl;
+        return;
+
+    }
+
+    Node *current = HEAD;
+
+    for (int i = 1; i < pos; i++)
+
+    {
+
+        current = current->next;
+
+    }
+
+    current->data = ele;
+    cout << "Updated position " << pos << " to " << ele << endl;
 }
 
 void displayElement()
@@ -253,7 +302,7 @@ int main()
 
                 case 3:
                 {
-
+                    UpdateElement();
                     break;
                 }
 
@@ -266,7 +315,7 @@ int main()
 
                 case 5:
                 {
-
+                    cout << "Total nodes: " << CountElement() << endl;
                     break;
                 }
 
