@@ -26,132 +26,133 @@ using namespace std;
 
 Node *HEAD = NULL;
 
-void insertAtBeginning(int ele)
 
+
+void InsertElement()
 {
+    int choice, ele;
+    do
+    {
+        cout << "\n--- Insert Menu ---" << endl;
+        cout << "1. Insert at Beginning" << endl;
+        cout << "2. Insert at End" << endl;
+        cout << "3. Insert at any Position" << endl;
+        cout << "0. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        
+        switch(choice)
+        {
+            case 1:
+            {
+
+                cout << "Enter value: ";
+                cin >> ele;
 
 
-    Node *current = new Node(ele);
-    current->next = HEAD;
-    HEAD = current;
+                if (HEAD == NULL)
+
+                {
+
+                    HEAD = new Node(ele);
+
+                }
+                else
+
+                {
+
+                    Node *current = new Node(ele);
+
+                    current->next = HEAD;
+                    HEAD = current;
+                }
+
+                cout << "Inserted " << ele << " at beginning" << endl;
 
 
+
+                break;
+            }
+            case 2:
+            {
+                cout << "Enter value: ";
+                cin >> ele;
+
+                if (HEAD == NULL)
+
+
+                {
+
+
+                    HEAD = new Node(ele);
+
+                }
+
+                else
+
+                {
+
+                    Node *current = HEAD;
+
+                    while (current->next != NULL)
+
+                    {
+
+                        current = current->next;
+
+                    }
+
+                    current->next = new Node(ele);
+
+                }
+
+                cout << "Inserted " << ele << " at end" << endl;
+
+
+                break;
+            }
+            case 3:
+            {
+                break;
+            }
+            case 0:
+            {
+                cout << "Returning to main menu..." << endl;
+                break;
+            }
+        }
+    } while (choice != 0);
 }
 
-void insertAtEnd(int ele)
+void displayElement()
 {
     if (HEAD == NULL)
+
+
     {
 
-        HEAD = new Node(ele);
+        cout << "List is empty" << endl;
+
 
     }
+
+
     else
     {
 
         Node *current = HEAD;
-        while (current->next != NULL)
+
+        cout << "List elements: ";
+        while (current != NULL)
 
         {
 
+            cout << current->data << " ";
             current = current->next;
+
+
         }
-
-        current->next = new Node(ele);
-
-    }
-    
-}
-
-void Insert()
-{
-    int choice, ele;
-    cout << "\n--- Insert Menu ---" << endl;
-    cout << "1. Insert at Beginning" << endl;
-    cout << "2. Insert at End" << endl;
-    cout << "3. Insert at any Position" << endl;
-    cout << "0. Exit" << endl;
-    cout << "Enter your choice: ";
-    cin >> choice;
-    
-    switch(choice)
-    {
-        case 1:
-        {
-
-            cout << "Enter value: ";
-            cin >> ele;
-
-
-            if (HEAD == NULL)
-
-            {
-
-                HEAD = new Node(ele);
-
-            }
-            else
-
-            {
-
-                Node *current = new Node(ele);
-
-                current->next = HEAD;
-                HEAD = current;
-            }
-
-            cout << "Inserted " << ele << " at beginning" << endl;
-
-
-
-            break;
-        }
-        case 2:
-        {
-            cout << "Enter value: ";
-            cin >> ele;
-
-            if (HEAD == NULL)
-
-
-            {
-
-
-                HEAD = new Node(ele);
-
-            }
-
-            else
-
-            {
-
-                Node *current = HEAD;
-
-                while (current->next != NULL)
-
-                {
-
-                    current = current->next;
-
-                }
-
-                current->next = new Node(ele);
-
-            }
-
-            cout << "Inserted " << ele << " at end" << endl;
-
-
-            break;
-        }
-        case 3:
-        {
-            break;
-        }
-        case 0:
-        {
-            break;
-        }
+        cout << endl;
     }
 }
 
@@ -182,7 +183,7 @@ int main()
         {
             case 1:
                 {
-                    Insert();
+                    InsertElement();
                     break;
                 }
 
@@ -200,35 +201,7 @@ int main()
 
                 case 4:
                 {
-
-                    if (HEAD == NULL)
-
-
-                    {
-
-                        cout << "List is empty" << endl;
-
-
-                    }
-
-
-                    else
-                    {
-
-                        Node *current = HEAD;
-
-                        cout << "List elements: ";
-                        while (current != NULL)
-
-                        {
-
-                            cout << current->data << " ";
-                            current = current->next;
-
-
-                        }
-                        cout << endl;
-                    }
+                    displayElement();
                     break;
                 }
 
