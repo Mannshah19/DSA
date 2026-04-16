@@ -113,6 +113,57 @@ void InsertElement()
             }
             case 3:
             {
+                int pos;
+
+                cout << "Enter position: ";
+                cin >> pos;
+
+
+                cout << "Enter value: ";
+                cin >> ele;
+
+                if (pos == 1)
+                {
+                    Node *current = new Node(ele);
+
+                    current->next = HEAD;
+                    HEAD = current;
+                }
+                else
+                {
+                    Node *current = HEAD;
+
+
+                    for (int i = 1; i < pos - 1; i++)
+
+                    {
+
+                        current = current->next;
+
+                    }
+
+                    if (current == NULL)
+
+                    {
+
+
+                        cout << "Position out of range" << endl;
+                    }
+
+
+                    else
+                    {
+
+
+                        Node *ptr = new Node(ele);
+                        ptr->next = current->next;
+                        current->next = ptr;
+                    }
+
+
+                }
+
+                cout << "Inserted " << ele << " at position " << pos << endl;
                 break;
             }
             case 0:
@@ -120,6 +171,13 @@ void InsertElement()
                 cout << "Returning to main menu..." << endl;
                 break;
             }
+
+            default:
+            {
+                cout << "Invalid Choice";
+                break;
+            }
+            
         }
     } while (choice != 0);
 }
@@ -221,6 +279,7 @@ int main()
             
             default:
                 {
+                    cout << "Invalid Choice";
                     break;
                 }
         }
