@@ -26,7 +26,59 @@ using namespace std;
 
 Node *HEAD = NULL;
 
+void DeleteElement()
+{
+    int choice;
+    do
+    {
+        cout << "\n--- Delete Menu ---" << endl;
+        cout << "1. Delete from Beginning" << endl;
+        cout << "2. Delete from End" << endl;
+        cout << "3. Delete at any Position" << endl;
+        cout << "0. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+        
+        switch(choice)
+        {
+            case 1:
+            {
+                if (HEAD == NULL)
+                {
+                    cout << "List is empty, nothing to delete" << endl;
+                }
+                else
+                {
+                    Node *current = HEAD;
+                    HEAD = HEAD->next;
+                    cout << "Deleted " << current->data << " from beginning" << endl;
+                    delete current;
+                }
+                break;
+            }
+            case 2:
+            {
+                break;
+            }
+            case 3:
+            {
+                break;
+            }
+            case 0:
+            {
+                cout << "Returning to main menu..." << endl;
+                break;
+            }
 
+            default:
+            {
+                cout << "Invalid Choice";
+                break;
+            }
+            
+        }
+    } while (choice != 0);
+}
 
 void InsertElement()
 {
@@ -231,6 +283,21 @@ void UpdateElement()
     cout << "Updated position " << pos << " to " << ele << endl;
 }
 
+void deleteAtBeginning()
+{
+    if (HEAD == NULL)
+    {
+        cout << "List is empty, nothing to delete" << endl;
+    }
+    else
+    {
+        Node *current = HEAD;
+        HEAD = HEAD->next;
+        cout << "Deleted " << current->data << " from beginning" << endl;
+        delete current;
+    }
+}
+
 void displayElement()
 {
     if (HEAD == NULL)
@@ -296,7 +363,7 @@ int main()
 
                 case 2:
                 {
-
+                    DeleteElement();
                     break;
                 }
 
