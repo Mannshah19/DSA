@@ -44,30 +44,166 @@ void DeleteElement()
             case 1:
             {
                 if (HEAD == NULL)
+
                 {
+
                     cout << "List is empty, nothing to delete" << endl;
                 }
+
                 else
                 {
+
+
                     Node *current = HEAD;
+
                     HEAD = HEAD->next;
+
                     cout << "Deleted " << current->data << " from beginning" << endl;
+
                     delete current;
+
                 }
+
                 break;
+
+
             }
+
+
             case 2:
             {
+
+                if (HEAD == NULL)
+
+
+                {
+
+
+                    cout << "List is empty, nothing to delete" << endl;
+
+                }
+                else if (HEAD->next == NULL)
+
+                {
+
+                    cout << "Deleted " << HEAD->data << " from end" << endl;
+
+                    delete HEAD;
+
+                    HEAD = NULL;
+
+                }
+
+                else
+
+                {
+
+                    Node *current = HEAD;
+
+                    while (current->next->next != NULL)
+
+                        current = current->next;
+
+                    cout << "Deleted " << current->next->data << " from end" << endl;
+
+                    delete current->next;
+
+                    current->next = NULL;
+
+                }
+
+
                 break;
+
+
             }
+
+
             case 3:
             {
+
+
+                if (HEAD == NULL)
+
+
+                {
+
+                    cout << "List is empty, nothing to delete" << endl;
+
+                    break;
+
+                }
+
+                int pos;
+
+                cout << "Enter position: ";
+                cin >> pos;
+
+
+                if (pos > CountElement() || pos < 1)
+
+
+                {
+
+
+                    cout << "Position out of range. List has " << CountElement() << " nodes" << endl;
+
+                }
+
+                else if (pos == 1)
+
+                {
+
+
+                    Node *current = HEAD;
+
+                    HEAD = HEAD->next;
+
+                    cout << "Deleted " << current->data << " from position " << pos << endl;
+
+                    delete current;
+
+
+                }
+
+
+                else
+
+                {
+
+
+                    Node *current = HEAD;
+
+                    for (int i = 1; i < pos - 1; i++)
+
+
+                        current = current->next;
+
+                    Node *ptr = current->next;
+
+                    current->next = ptr->next;
+
+                    cout << "Deleted " << ptr->data << " from position " << pos << endl;
+                    delete ptr;
+
+
+                }
+
+
                 break;
+
+
             }
+
             case 0:
+
+
             {
+
                 cout << "Returning to main menu..." << endl;
+
                 break;
+                
             }
 
             default:
@@ -283,20 +419,6 @@ void UpdateElement()
     cout << "Updated position " << pos << " to " << ele << endl;
 }
 
-void deleteAtBeginning()
-{
-    if (HEAD == NULL)
-    {
-        cout << "List is empty, nothing to delete" << endl;
-    }
-    else
-    {
-        Node *current = HEAD;
-        HEAD = HEAD->next;
-        cout << "Deleted " << current->data << " from beginning" << endl;
-        delete current;
-    }
-}
 
 void displayElement()
 {
