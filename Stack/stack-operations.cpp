@@ -174,6 +174,61 @@ class Stack
             cout << "Stack size : " << count << endl;
             
         }
+
+        void decimalToBinary()
+        {
+
+            int decimal;
+
+            cout << "Enter decimal number : ";
+            cin >> decimal;
+
+            if (decimal == 0)
+            {
+
+                cout << "Binary : 0" << endl;
+                return;
+
+            }
+
+            while (decimal > 0)
+            {
+
+                int remainder = decimal % 2;
+
+                if (top >= size - 1)
+                {
+
+                    cout << "Stack overflow" << endl;
+                    return;
+
+                }
+
+                top++;
+
+                arr[top] = remainder;
+
+                count++;
+
+                decimal = decimal / 2;
+
+            }
+
+            cout << "Binary : ";
+
+            for (int i = top; i >= 0; i--)
+            {
+
+                cout << arr[i];
+
+            }
+
+            cout << endl;
+
+            top = -1;
+            count = 0;
+
+        }
         
         
         ~Stack() 
@@ -210,6 +265,7 @@ int main ()
         cout << "5. Check empty or not....." << endl;
         cout << "6. Check full or not....." << endl;
         cout << "7. Check size of stack....." << endl;
+        cout << "8. Decimal to Binary....." << endl;
         cout << "0. Exit....." << endl;
 
 
@@ -277,6 +333,15 @@ int main ()
         {
 
             s.sizeStack();
+            
+            
+            break;
+        }
+
+        case 8:
+        {
+
+            s.decimalToBinary();
             
             
             break;
