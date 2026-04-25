@@ -27,6 +27,8 @@ class Stack
 
             string str;
 
+            
+
             cout << "Enter string : ";
             cin >> str;
 
