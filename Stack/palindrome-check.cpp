@@ -23,14 +23,19 @@ class Stack
 
 
         void checkPalindrome()
+
+        
         {
+
 
             string str;
 
-            
+
 
             cout << "Enter string : ";
             cin >> str;
+
+
 
             int len = str.length();
 
@@ -38,8 +43,11 @@ class Stack
             for (int i = 0; i < len; i++)
             {
 
+
+
                 if (top >= 19)
                 {
+
 
                     cout << "Stack overflow" << endl;
                     
