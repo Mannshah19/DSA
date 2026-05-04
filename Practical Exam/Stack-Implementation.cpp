@@ -4,295 +4,127 @@ using namespace std;
 
 class Stack 
 {
+private:
+    int *arr;
+    int top;
+    int size;
 
-
-    public:
-
-
-        int *arr;
-
-        int top;
-
-        int size;
-
-        int count = 0 , ele;
-        
-        Stack(int s) {
-
-            size = s;
-
-            arr = new int[size];
-
-            top = -1;
-
-            count = 0;
-
-        }
+public:
+    Stack(int s) {
+        this->size = s;
+        this->arr = new int[this->size];
+        this->top = -1;
+    }
 
 
 
-        void pushStack()
+    void pushStack()
+    {
+        if (top >= size - 1)
         {
-
-            if (top >= size - 1)
-            {
-
-                cout << "Stack overflow";
-            }
-            
-
-            else
-            {
-
-
-                cout << "Enter element to push : ";
-                cin >> ele;
-
-                top++;
-
-                arr[top] = ele;
-
-                count++;
-
-                cout << "Element pushed successfully" << endl;
-
-            }
-            
+            cout << "Stack overflow" << endl;
         }
-
-        void viewStack()
+        else
         {
+            int ele;
+            cout << "Enter element to push : ";
+            cin >> ele;
 
-            if (top == -1)
-            {
+            top++;
+            arr[top] = ele;
 
-                cout << "Stack is empty" << endl;
-            }
-            
-
-            else
-            {
-
-                cout << "Stack Elements : ";
-
-                for (int i = top; i >= 0 ; i--)
-                {
-
-                    cout << arr[i] << " ";
-
-                }
-
-                cout << endl;
-
-            }
-            
+            cout << "Element pushed successfully" << endl;
         }
+    }
 
-        void popStack()
+    void viewStack()
+    {
+        if (top == -1)
         {
-
-            if (top == -1)
-            {
-
-                cout << "Stack underflow" << endl;
-            }
-            
-
-            else
-            {
-
-                cout << "Popped element : " << arr[top] << endl;
-
-                top--;
-
-                count--;
-
-            }
-            
+            cout << "Stack is empty" << endl;
         }
-
-
-    
-
-            while (decimal > 0)
-            {
-
-                int remainder = decimal % 2;
-
-                if (top >= size - 1)
-                {
-
-                    cout << "Stack overflow" << endl;
-                    return;
-
-                }
-
-                top++;
-
-                arr[top] = remainder;
-
-                count++;
-
-                decimal = decimal / 2;
-
-            }
-
-            cout << "Binary : ";
-
+        else
+        {
+            cout << "Stack Elements : ";
             for (int i = top; i >= 0; i--)
             {
-
-                cout << arr[i];
-
+                cout << arr[i] << " ";
             }
-
             cout << endl;
-
-            top = -1;
-            count = 0;
-
         }
-        
-        
-        ~Stack() 
+    }
+
+    void popStack()
+    {
+        if (top == -1)
         {
-
-            delete[] arr;
-
+            cout << "Stack underflow" << endl;
         }
-
-
-
-
+        else
+        {
+            cout << "Popped element : " << arr[top] << endl;
+            top--;
+        }
+    }
+        
+        
+    ~Stack() 
+    {
+        delete[] arr;
+    }
 };
 
 
-int main ()
+int main()
 {
     int size;
     cout << "Enter Size of a Stack : ";
     cin >> size;
+    
+    if (size <= 0)
+    {
+        cout << "Invalid size! Please enter a positive number." << endl;
+        return 0;
+    }
     
     Stack s(size);
 
     int choice;
 
     do
-
     {
-
         cout << "\n1. Push in Stack....." << endl;
         cout << "2. Pop from Stack....." << endl;
-        cout << "4. View  Stack....." << endl;
+        cout << "3. View Stack....." << endl;
         cout << "0. Exit....." << endl;
-
 
         cout << "Enter your choice : ";
         cin >> choice;
 
-
         switch (choice)
         {
         case 1:
-        {
             s.pushStack();
-            
-            
             break;
-        }
-
 
         case 2:
-        {
-
             s.popStack();
-            
-            
             break;
-        }
 
         case 3:
-        {
-
-            s.peekStack();
-            
-            
-            break;
-        }
-
-        case 4:
-        {
-
             s.viewStack();
-            
-            
             break;
-        }
-
-        case 5:
-        {
-
-            s.isEmpty();
-            
-            
-            break;
-        }
-
-        case 6:
-        {
-
-            s.isFull();
-            
-            
-            break;
-        }
-
-        case 7:
-        {
-
-            s.sizeStack();
-            
-            
-            break;
-        }
-
-        case 8:
-        {
-
-            s.decimalToBinary();
-            
-            
-            break;
-        }
-
 
         case 0:
-        {
-
             cout << "Exiting....." << endl;
-            
-            
             break;
-        }
 
-
-        
         default:
             cout << "Invalid choice!" << endl;
             break;
         }
         
     } while (choice != 0);
-    
 
-
-
-
-
-
-
-
-return 0;
-
-
+    return 0;
 }
