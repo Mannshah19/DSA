@@ -1,206 +1,81 @@
 #include<iostream>
 using namespace std;
 
-
 class Queue 
 {
+    int arr[50];
+    int rear, front;
+    int capacity;
 
+public:
+    Queue(int size)
+    {
+        this->capacity = size;
+        this->rear = -1;
+        this->front = -1;
+    }
 
-    public:
-
-
-        int arr[50];
-        int rear = -1, front = -1;
-        int count = 0, size, ele;
-        
-
-
-
-        void addQueue()
+    void addQueue()
+    {
+        if (rear >= capacity - 1)
         {
-
-            if (rear >= size - 1)
-            {
-
-                cout << "Queue is Full" << endl;
-            }
-            
-
-            else
-            {
-
-
-                cout << "Enter element to add : ";
-                cin >> ele;
-
-                if (front == -1)
-                {
-                    front = 0;
-                }
-
-                rear++;
-
-                arr[rear] = ele;
-
-                count++;
-
-                cout << "Element Added successfully" << endl;
-
-            }
-            
+            cout << "Queue is Full" << endl;
         }
-
-        void displayQueue()
+        else
         {
+            int ele;
+            cout << "Enter element to add : ";
+            cin >> ele;
 
-            if (front == -1 && rear == -1)
+            if (front == -1)
             {
-
-                cout << "Queue is Empty";
+                front = 0;
             }
-            
 
-            
-
-            else
-            {
-
-                cout << "Queue Elements : ";
-
-                for (int i = front; i <= rear ; i++)
-                {
-
-                    cout << arr[i] << " ";
-
-                }
-
-                cout << endl;
-
-            }
-            
+            rear++;
+            arr[rear] = ele;
+            cout << "Element Added successfully" << endl;
         }
+    }
 
-        void deleteQueue()
+    void displayQueue()
+    {
+        if (front == -1)
         {
-
-            if (front == -1 || rear == -1 )
-            {
-
-                cout << "Queue is Empty" << endl;
-            }
-            
-
-            else
-            {
-
-                cout << "Deleted element : " << arr[front] << endl;
-
-                front++;
-
-                count--;
-
-                if (front > rear)
-                {
-                    front = rear = -1;
-                }
-
-            }
-            
+            cout << "Queue is Empty" << endl;
         }
-
-        void frontQueue()
+        else
         {
-
-            if (front == -1 || rear == -1 )
+            cout << "Queue Elements : ";
+            for (int i = front; i <= rear; i++)
             {
-
-                cout << "Queue is Empty" << endl;
+                cout << arr[i] << " ";
             }
-            
-
-            else
-            {
-
-                cout << "Front element : " << arr[front] << endl;
-
-            }
-            
+            cout << endl;
         }
+    }
 
-        void rearQueue()
+    void deleteQueue()
+    {
+        if (front == -1)
         {
-
-            if (front == -1 || rear == -1 )
-            {
-
-                cout << "Queue is Empty" << endl;
-            }
-            
-
-            else
-            {
-
-                cout << "Rear element : " << arr[rear] << endl;
-
-            }
-            
+            cout << "Queue is Empty" << endl;
         }
-
-        void isEmpty()
+        else
         {
+            cout << "Deleted element : " << arr[front] << endl;
+            front++;
 
-            if (front == -1 || rear == -1 )
+            if (front > rear)
             {
-
-                cout << "Queue is Empty" << endl;
+                front = rear = -1;
             }
-            
-
-            else
-            {
-
-                cout << "Queue is not empty" << endl;
-
-            }
-            
         }
-
-        void isFull()
-        {
-
-            if (rear >= size - 1)
-            {
-
-                cout << "Queue is full" << endl;
-            }
-            
-
-            else
-            {
-
-                cout << "Queue is not full" << endl;
-
-            }
-            
-        }
-
-        void sizeQueue()
-        {
-
-            cout << "Queue size : " << count << endl;
-            
-        }
-        
-        
-
-
-
-
-
+    }
 };
 
 
-int main ()
+int main()
 {
     int size;
     cout << "Enter Size of Queue : ";
@@ -212,135 +87,41 @@ int main ()
         return 0;
     }
 
-    Queue q;
-    q.size = size;
-
+    Queue q(size);
     int choice;
 
     do
-
     {
-
-        
-
-
-        cout << "\n1. Add in Queue....." << endl;
-        cout << "2. Delete from Queue....." << endl;
-        cout << "3. Front of Queue....." << endl;
-        cout << "4. Rear of Queue....." << endl;
-        cout << "5. Check empty or not....." << endl;
-        cout << "6. Check full or not....." << endl;
-        cout << "7. Check size of Queue....." << endl;
-        cout << "8. Display Queue....." << endl;
-        cout << "0. Exit....." << endl;
-
-
+        cout << "\n1. Enqueue" << endl;
+        cout << "2. Dequeue" << endl;
+        cout << "3. Display" << endl;
+        cout << "0. Exit" << endl;
         cout << "Enter your choice : ";
         cin >> choice;
-
 
         switch (choice)
         {
         case 1:
-        {
             q.addQueue();
-            
-            
             break;
-        }
-
 
         case 2:
-        {
-
             q.deleteQueue();
-            
-            
             break;
-        }
 
         case 3:
-        {
-
-            q.frontQueue();
-            
-            
-            break;
-        }
-
-        case 4:
-        {
-
-            q.rearQueue();
-            
-            
-            break;
-        }
-
-        case 5:
-        {
-
-            q.isEmpty();
-            
-            
-            break;
-        }
-
-        case 6:
-        {
-
-            q.isFull();
-            
-            
-            break;
-        }
-
-        case 7:
-        {
-
-            q.sizeQueue();
-            
-            
-            break;
-        }
-
-        case 8:
-        {
-
             q.displayQueue();
-            
-            
             break;
-        }
-
 
         case 0:
-        {
-
             cout << "Exiting....." << endl;
-            
-            
             break;
-        }
 
-
-        
         default:
             cout << "Invalid choice!" << endl;
             break;
         }
-        
     } while (choice != 0);
-    
 
-
-
-
-
-
-
-
-return 0;
-
-
+    return 0;
 }
