@@ -84,47 +84,47 @@ int main()
     if (size <= 0)
     {
         cout << "Invalid size! Please enter a positive number." << endl;
-        return 0;
     }
-    
-    Stack s(size);
-
-    int choice;
-
-    do
+    else
     {
-        cout << "\n1. Push in Stack....." << endl;
-        cout << "2. Pop from Stack....." << endl;
-        cout << "3. View Stack....." << endl;
-        cout << "0. Exit....." << endl;
+        Stack s(size);
+        int choice;
 
-        cout << "Enter your choice : ";
-        cin >> choice;
-
-        switch (choice)
+        do
         {
-        case 1:
-            s.pushStack();
-            break;
+            cout << "\n1. Push in Stack....." << endl;
+            cout << "2. Pop from Stack....." << endl;
+            cout << "3. View Stack....." << endl;
+            cout << "0. Exit....." << endl;
 
-        case 2:
-            s.popStack();
-            break;
+            cout << "Enter your choice : ";
+            cin >> choice;
 
-        case 3:
-            s.viewStack();
-            break;
+            switch (choice)
+            {
+            case 1:
+                s.pushStack();
+                break;
 
-        case 0:
-            cout << "Exiting....." << endl;
-            break;
+            case 2:
+                s.popStack();
+                break;
 
-        default:
-            cout << "Invalid choice!" << endl;
-            break;
-        }
-        
-    } while (choice != 0);
+            case 3:
+                s.viewStack();
+                break;
+
+            case 0:
+                cout << "Exiting....." << endl;
+                break;
+
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+            }
+            
+        } while (choice != 0);
+    }
 
     return 0;
 }

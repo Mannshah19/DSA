@@ -84,44 +84,45 @@ int main()
     if (size > 50 || size <= 0)
     {
         cout << "Invalid size! Please enter size between 1 and 50." << endl;
-        return 0;
     }
-
-    Queue q(size);
-    int choice;
-
-    do
+    else
     {
-        cout << "\n1. Enqueue" << endl;
-        cout << "2. Dequeue" << endl;
-        cout << "3. Display" << endl;
-        cout << "0. Exit" << endl;
-        cout << "Enter your choice : ";
-        cin >> choice;
+        Queue q(size);
+        int choice;
 
-        switch (choice)
+        do
         {
-        case 1:
-            q.addQueue();
-            break;
+            cout << "\n1. Enqueue" << endl;
+            cout << "2. Dequeue" << endl;
+            cout << "3. Display" << endl;
+            cout << "0. Exit" << endl;
+            cout << "Enter your choice : ";
+            cin >> choice;
 
-        case 2:
-            q.deleteQueue();
-            break;
+            switch (choice)
+            {
+            case 1:
+                q.addQueue();
+                break;
 
-        case 3:
-            q.displayQueue();
-            break;
+            case 2:
+                q.deleteQueue();
+                break;
 
-        case 0:
-            cout << "Exiting....." << endl;
-            break;
+            case 3:
+                q.displayQueue();
+                break;
 
-        default:
-            cout << "Invalid choice!" << endl;
-            break;
-        }
-    } while (choice != 0);
+            case 0:
+                cout << "Exiting....." << endl;
+                break;
+
+            default:
+                cout << "Invalid choice!" << endl;
+                break;
+            }
+        } while (choice != 0);
+    }
 
     return 0;
 }
