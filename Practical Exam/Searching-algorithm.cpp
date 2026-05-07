@@ -17,10 +17,29 @@ int main()
         cout << "arr[" << i << "]: ";
         cin >> arr[i];
     }
-    
+
     cout << "Enter element to search: ";
     cin >> key;
+    for(int i = 0; i < n; i++)
+    {
+        comparisons++;
+        if(arr[i] == key)
+        {
+            index = i;
+            found = true;
+            break;
+        }
+    }
     
+    if(found)
+    {
+        cout << "Element found at position " << index + 1 << endl;
+    }
+    else
+    {
+        cout << "Element not found" << endl;
+    }
+    cout << "Number of comparisons: " << comparisons << endl;
     
     return 0;
 }
