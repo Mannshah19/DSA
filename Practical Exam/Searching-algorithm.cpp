@@ -38,9 +38,6 @@ int main()
     else
     {
         cout << "Element not found" << endl;
-
-
-
     }
     cout << "Number of comparisons: " << comparisons << endl;
     
